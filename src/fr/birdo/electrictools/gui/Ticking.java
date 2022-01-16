@@ -1,4 +1,6 @@
-package fr.birdo.electrictools;
+package fr.birdo.electrictools.gui;
+
+import fr.birdo.electrictools.ElectricTools;
 
 public class Ticking {
 
