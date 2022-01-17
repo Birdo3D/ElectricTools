@@ -1,4 +1,8 @@
-package fr.birdo.electrictools.gui;
+package fr.birdo.electrictools.event;
+
+import fr.birdo.electrictools.gui.button.Button;
+import fr.birdo.electrictools.util.Mode;
+import fr.birdo.electrictools.gui.Pannel;
 
 import java.awt.event.MouseListener;
 
@@ -8,8 +12,10 @@ public class MouseEvent implements MouseListener {
         for (Mode mode : Mode.values())
             if (mode == Pannel.getMode())
                 for (Button button : Pannel.getGuiFromMode(Pannel.getMode()).getButtonList())
-                    if (e.getX() >= button.getPosX() && e.getX() <= button.getPosX() + button.getSizeX())
-                        if (e.getY() >= button.getPosY() && e.getY() <= button.getPosY() + button.getSizeY())
+                    //System.out.println("x :" + button.getPosX() + " -- " + e.getX() + " -- " + (button.getPosX() + button.getSizeX()));
+                    //System.out.println("y :" + button.getPosY() + " -- " + (e.getY() - 31) + " -- " + (button.getPosY() + button.getSizeY()));
+                    if (e.getX() >= button.getPosX() && e.getX() <= (button.getPosX() + button.getSizeX()))
+                        if ((e.getY() - 31) >= button.getPosY() && (e.getY() - 31) <= (button.getPosY() + button.getSizeY()))
                             Pannel.getGuiFromMode(Pannel.getMode()).onButtonClicked(button.getId());
     }
 

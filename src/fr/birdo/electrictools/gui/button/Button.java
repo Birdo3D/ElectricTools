@@ -1,4 +1,4 @@
-package fr.birdo.electrictools.gui;
+package fr.birdo.electrictools.gui.button;
 
 public class Button {
 
