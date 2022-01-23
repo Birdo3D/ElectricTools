@@ -19,6 +19,7 @@ public class ElectricTools {
 
     public static void main(String[] args) {
         frame.addMouseListener(new MouseEvent());
+        frame.addMouseMotionListener(new MouseEvent());
         frame.setSize(width, height);
         frame.setTitle("ElectricTools");
         frame.setLocationRelativeTo(null);

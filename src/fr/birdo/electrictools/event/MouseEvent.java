@@ -5,8 +5,9 @@ import fr.birdo.electrictools.util.Mode;
 import fr.birdo.electrictools.gui.Pannel;
 
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class MouseEvent implements MouseListener {
+public class MouseEvent implements MouseListener, MouseMotionListener {
 
     public void mousePressed(java.awt.event.MouseEvent e) {
         for (Mode mode : Mode.values())
@@ -29,5 +30,13 @@ public class MouseEvent implements MouseListener {
     }
 
     public void mouseExited(java.awt.event.MouseEvent e) {
+    }
+
+    public void mouseDragged(java.awt.event.MouseEvent e) {
+        System.out.println("X : " + e.getX());
+        System.out.println("Y : " + e.getY());
+    }
+
+    public void mouseMoved(java.awt.event.MouseEvent e) {
     }
 }

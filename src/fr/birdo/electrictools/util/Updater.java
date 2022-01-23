@@ -4,7 +4,7 @@ import fr.birdo.electrictools.ElectricTools;
 
 public class Updater {
 
-    private static int updatePerSecond = 20;
+    private static int updatePerSecond = 60;
 
     public static void tick(){
         while (true){
