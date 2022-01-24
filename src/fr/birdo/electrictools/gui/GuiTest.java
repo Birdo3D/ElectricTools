@@ -14,15 +14,14 @@ public class GuiTest extends SimpleGui {
     private final List<Button> buttonList = new ArrayList<>();
 
     public GuiTest(Graphics graphics) {
-        buttonList.add(new TexturedButton(1, ElectricTools.getResource("icon.png"), 8, 8, 408, 12));
-        buttonList.add(new TexturedButton(2, ElectricTools.getResource("icon.png"), 422, 8, 408, 12));
+        buttonList.add(new TexturedButton(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27));
+        buttonList.add(new TexturedButton(1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27));
     }
 
     public void onButtonClicked(int buttonIndex) {
-        System.out.println(buttonIndex);
-        if (buttonIndex == 1) {
+        if (buttonIndex == 0) {
             Pannel.setMode(Mode.DIAGRAMS);
-        } else if (buttonIndex == 2) {
+        } else if (buttonIndex == 1) {
             Pannel.setMode(Mode.TEST);
         }
     }

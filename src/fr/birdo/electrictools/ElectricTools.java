@@ -14,8 +14,8 @@ public class ElectricTools {
     public static final JFrame frame = new JFrame();
     private static final JPanel pannel = new Pannel();
     private static final String resourcePath = "/fr/birdo/electrictools/ressources/";
-    public static final int width = 854;
-    public static final int height = 480;
+    public static final int width = 1225;
+    public static final int height = 687;
 
     public static void main(String[] args) {
         frame.addMouseListener(new MouseEvent());
