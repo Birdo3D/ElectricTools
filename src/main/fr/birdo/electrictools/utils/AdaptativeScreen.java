@@ -1,6 +1,6 @@
-package fr.birdo.electrictools.gui;
+package main.fr.birdo.electrictools.utils;
 
-import fr.birdo.electrictools.ElectricTools;
+import main.fr.birdo.electrictools.guis.Gui;
 
 public class AdaptativeScreen {
 

@@ -1,4 +1,4 @@
-package fr.birdo.electrictools.gui;
+package main.fr.birdo.electrictools.utils;
 
 import java.awt.image.BufferedImage;
 

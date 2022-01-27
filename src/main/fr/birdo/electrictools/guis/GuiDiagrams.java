@@ -1,6 +1,9 @@
-package fr.birdo.electrictools.gui;
+package main.fr.birdo.electrictools.guis;
 
-import fr.birdo.electrictools.ElectricTools;
+import main.fr.birdo.electrictools.ElectricTools;
+import main.fr.birdo.electrictools.utils.AdaptativeScreen;
+import main.fr.birdo.electrictools.utils.Button;
+import main.fr.birdo.electrictools.utils.GenericGui;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,11 +11,11 @@ import java.util.List;
 
 public class GuiDiagrams extends GenericGui {
 
-    private final List<Button> buttons = new ArrayList<>();
+    private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
 
     public GuiDiagrams(){
-        buttons.add(new Button(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
-        buttons.add(new Button(1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
     }
 
     public GuiDiagrams(Graphics graphics) {

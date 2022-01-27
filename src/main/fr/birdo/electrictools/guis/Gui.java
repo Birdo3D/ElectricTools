@@ -1,7 +1,10 @@
-package fr.birdo.electrictools.gui;
+package main.fr.birdo.electrictools.guis;
 
-import fr.birdo.electrictools.ElectricTools;
-import fr.birdo.electrictools.event.MouseEvent;
+import main.fr.birdo.electrictools.ElectricTools;
+import main.fr.birdo.electrictools.events.MouseEvent;
+import main.fr.birdo.electrictools.utils.AdaptativeScreen;
+import main.fr.birdo.electrictools.utils.Button;
+import main.fr.birdo.electrictools.utils.GenericGui;
 
 import javax.swing.*;
 import java.awt.*;

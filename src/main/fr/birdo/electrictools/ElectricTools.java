@@ -1,6 +1,6 @@
-package fr.birdo.electrictools;
+package main.fr.birdo.electrictools;
 
-import fr.birdo.electrictools.gui.Gui;
+import main.fr.birdo.electrictools.guis.Gui;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,7 +30,7 @@ public class ElectricTools extends JPanel {
 
     public static BufferedImage getResource(String resource) {
         try {
-            return ImageIO.read(ElectricTools.class.getResourceAsStream("/fr/birdo/electrictools/ressources/" + resource));
+            return ImageIO.read(ElectricTools.class.getResourceAsStream("/main/resources/textures/" + resource));
         } catch (IOException e) {
             throw new IllegalArgumentException("Error - Resource Finder");
         }

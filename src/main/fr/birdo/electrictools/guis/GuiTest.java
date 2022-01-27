@@ -1,4 +1,7 @@
-package fr.birdo.electrictools.gui;
+package main.fr.birdo.electrictools.guis;
+
+import main.fr.birdo.electrictools.utils.Button;
+import main.fr.birdo.electrictools.utils.GenericGui;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -6,7 +9,7 @@ import java.util.List;
 
 public class GuiTest extends GenericGui {
 
-    private final List<Button> buttons = new ArrayList<>();
+    private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
 
     public GuiTest(){
 
