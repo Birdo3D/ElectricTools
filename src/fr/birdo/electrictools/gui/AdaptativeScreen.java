@@ -9,10 +9,10 @@ public class AdaptativeScreen {
     }
 
     public static int getWidth(int baseTextureWidth){
-        return baseTextureWidth * ElectricTools.frame.getWidth() / ElectricTools.width;
+        return baseTextureWidth * Gui.frame.getWidth() / Gui.width;
     }
 
     public static int getHeight(int baseTextureHeight){
-        return baseTextureHeight * ElectricTools.frame.getHeight() / ElectricTools.height;
+        return baseTextureHeight * Gui.frame.getHeight() / Gui.height;
     }
 }

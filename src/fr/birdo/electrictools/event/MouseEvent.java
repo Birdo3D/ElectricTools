@@ -1,24 +1,19 @@
 package fr.birdo.electrictools.event;
 
-import fr.birdo.electrictools.gui.button.Button;
-import fr.birdo.electrictools.gui.button.TexturedButton;
-import fr.birdo.electrictools.util.Mode;
-import fr.birdo.electrictools.gui.Pannel;
+import fr.birdo.electrictools.gui.AdaptativeScreen;
+import fr.birdo.electrictools.gui.Button;
+import fr.birdo.electrictools.gui.Gui;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Objects;
 
 public class MouseEvent implements MouseListener, MouseMotionListener {
 
     public void mousePressed(java.awt.event.MouseEvent e) {
-        for (Mode mode : Mode.values())
-            if (mode == Pannel.getMode())
-                for (Button button : Pannel.getGuiFromMode(Pannel.getMode()).getButtonList())
-                    //System.out.println("x :" + button.getPosX() + " -- " + e.getX() + " -- " + (button.getPosX() + button.getSizeX()));
-                    //System.out.println("y :" + button.getPosY() + " -- " + (e.getY() - 31) + " -- " + (button.getPosY() + button.getSizeY()));
-                    if (e.getX() >= button.getPosX() && e.getX() <= (button.getPosX() + button.getSizeX()))
-                        if ((e.getY() - 31) >= button.getPosY() && (e.getY() - 31) <= (button.getPosY() + button.getSizeY()))
-                            Pannel.getGuiFromMode(Pannel.getMode()).onButtonClicked(button.getId());
+        for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
+            if (isButton(button, e.getX(), e.getY()))
+                Gui.getGui().onButtonClicked(button.getId());
     }
 
     public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -39,14 +34,11 @@ public class MouseEvent implements MouseListener, MouseMotionListener {
     }
 
     public void mouseMoved(java.awt.event.MouseEvent e) {
-        for (Mode mode : Mode.values())
-            if (mode == Pannel.getMode())
-                for (Button button : Pannel.getGuiFromMode(Pannel.getMode()).getButtonList())
-                    if (e.getX() >= button.getPosX() && e.getX() <= (button.getPosX() + button.getSizeX()))
-                        if ((e.getY() - 31) >= button.getPosY() && (e.getY() - 31) <= (button.getPosY() + button.getSizeY()))
-                            if (button instanceof TexturedButton) {
-                                ((TexturedButton) button).setHover(true);
-                                System.out.println("TRUE");
-                            }
+        for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
+            button.setHover(isButton(button, e.getX(), e.getY()));
+    }
+
+    public boolean isButton(Button button, int x, int y) {
+        return (x >= AdaptativeScreen.getWidth(button.getPosX()) && x <= (AdaptativeScreen.getWidth(button.getPosX()) + AdaptativeScreen.getWidth(button.getSizeX()))) && ((y - 31) >= AdaptativeScreen.getHeight(button.getPosY()) && (y - 31) <= (AdaptativeScreen.getHeight(button.getPosY()) + AdaptativeScreen.getHeight(button.getSizeY())));
     }
 }
