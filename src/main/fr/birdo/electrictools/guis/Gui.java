@@ -35,15 +35,17 @@ public class Gui extends JPanel {
     public void paintComponent(Graphics g) {
         //Initialize variables
         graphics = g;
+        //Background
+        g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Gui
         switch (getMode()) {
             case DIAGRAMS:
-                new GuiDiagrams(g);
+                GuiDiagrams.drawScreen(g);
+                break;
             case TEST:
-                new GuiTest(g);
+                GuiTest.drawScreen(g);
+                break;
         }
-        //Background
-        g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
             Image buttonTexture = button.getTexture();

@@ -12,11 +12,10 @@ public class GuiTest extends GenericGui {
     private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
 
     public GuiTest(){
-
     }
 
-    public GuiTest(Graphics graphics) {
-        graphics.drawString("Coucou", 100, 100);
+    public static void drawScreen(Graphics graphics) {
+        graphics.drawString("Coucou", 500, 500);
     }
 
     public java.util.List<Button> getButtons() {

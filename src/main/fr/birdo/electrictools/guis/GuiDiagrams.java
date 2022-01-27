@@ -13,12 +13,12 @@ public class GuiDiagrams extends GenericGui {
 
     private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
 
-    public GuiDiagrams(){
+    public GuiDiagrams() {
         buttons.add(new main.fr.birdo.electrictools.utils.Button(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
         buttons.add(new main.fr.birdo.electrictools.utils.Button(1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
     }
 
-    public GuiDiagrams(Graphics graphics) {
+    public static void drawScreen(Graphics graphics) {
         //Grid
         int test = Gui.width + Gui.height;
         int test2 = Gui.frame.getWidth() + Gui.frame.getHeight();
@@ -28,8 +28,8 @@ public class GuiDiagrams extends GenericGui {
             for (int i = 0; i < 46; i++) {
                 int a = AdaptativeScreen.get(Gui.width, Gui.frame.getWidth(), 272) + (i * rectSize);
                 int b = AdaptativeScreen.get(Gui.height, Gui.frame.getHeight(), 154 - 8) + (j * rectSize);
-                graphics.drawRect(a, b, rectSize, rectSize);
                 graphics.setColor(Color.GRAY);
+                graphics.drawRect(a, b, rectSize, rectSize);
             }
         }
     }
@@ -39,10 +39,13 @@ public class GuiDiagrams extends GenericGui {
     }
 
     public void onButtonClicked(int buttonIndex) {
-        if (buttonIndex == 0) {
-            Gui.setMode(Gui.Mode.DIAGRAMS);
-        } else if (buttonIndex == 1) {
-            Gui.setMode(Gui.Mode.TEST);
+        switch (buttonIndex) {
+            case 0:
+                Gui.setMode(Gui.Mode.DIAGRAMS);
+                break;
+            case 1:
+                Gui.setMode(Gui.Mode.TEST);
+                break;
         }
     }
 }

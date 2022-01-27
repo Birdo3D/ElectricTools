@@ -1,7 +1,5 @@
 package main.fr.birdo.electrictools.utils;
 
-import main.fr.birdo.electrictools.utils.Button;
-
 public class GenericGui {
 
     public GenericGui() {
