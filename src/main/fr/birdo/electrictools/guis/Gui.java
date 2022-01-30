@@ -75,7 +75,7 @@ public class Gui extends JPanel {
         return null;
     }
 
-    enum Mode {
+    public enum Mode {
         DIAGRAMS,
         TEST
     }

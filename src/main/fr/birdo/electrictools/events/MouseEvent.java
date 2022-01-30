@@ -32,8 +32,6 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     public void mouseDragged(java.awt.event.MouseEvent e) {
-        //System.out.println("X : " + e.getX());
-        //System.out.println("Y : " + e.getY());
     }
 
     public void mouseMoved(java.awt.event.MouseEvent e) {
@@ -42,11 +40,13 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     public void mouseWheelMoved(MouseWheelEvent e) {
-        if (e.getWheelRotation() < 0) {
-            GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() + 1);
-        } else {
-            GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() - 1);
-        }
+        //Grid zoom (for GuiDiagrams)
+        if (Gui.getMode() == Gui.Mode.DIAGRAMS && GuiDiagrams.isGrid(e.getX(), e.getY()))
+            if (e.getWheelRotation() < 0) {
+                GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() + 1);
+            } else {
+                GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() - 1);
+            }
     }
 
     public boolean isButton(Button button, int x, int y) {
