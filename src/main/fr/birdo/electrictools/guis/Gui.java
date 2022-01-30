@@ -4,7 +4,7 @@ import main.fr.birdo.electrictools.ElectricTools;
 import main.fr.birdo.electrictools.events.MouseEvent;
 import main.fr.birdo.electrictools.utils.AdaptativeScreen;
 import main.fr.birdo.electrictools.utils.Button;
-import main.fr.birdo.electrictools.utils.GenericGui;
+import main.fr.birdo.electrictools.utils.GuiGeneric;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,15 +15,16 @@ public class Gui extends JPanel {
     public static final JFrame frame = new JFrame();
     public static final JPanel contentPane = new Gui();
     public static final int width = 1225;
-    public static final int height = 687;
+    public static final int height = 685;
     private static Mode mode = Mode.DIAGRAMS;
     public static Graphics graphics;
-    private static final GenericGui guiDiagrams = new GuiDiagrams();
-    private static final GenericGui guiTest = new GuiTest();
+    private static final GuiGeneric guiDiagrams = new GuiDiagrams();
+    private static final GuiGeneric guiTest = new GuiTest();
 
     public static void initGui() {
         frame.addMouseListener(new MouseEvent());
         frame.addMouseMotionListener(new MouseEvent());
+        frame.addMouseWheelListener(new MouseEvent());
         frame.setSize(width, height);
         frame.setTitle("ElectricTools");
         frame.setLocationRelativeTo(null);
@@ -35,9 +36,8 @@ public class Gui extends JPanel {
     public void paintComponent(Graphics g) {
         //Initialize variables
         graphics = g;
-        //Background
-        g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Gui
+        graphics.drawImage(ElectricTools.getResource("1.png"), 0, 0, frame.getWidth(), frame.getHeight(), null);
         switch (getMode()) {
             case DIAGRAMS:
                 GuiDiagrams.drawScreen(g);
@@ -46,6 +46,8 @@ public class Gui extends JPanel {
                 GuiTest.drawScreen(g);
                 break;
         }
+        //Background
+        g.drawImage(ElectricTools.getResource("unknown3.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
             Image buttonTexture = button.getTexture();
@@ -63,7 +65,7 @@ public class Gui extends JPanel {
         return mode;
     }
 
-    public static GenericGui getGui() {
+    public static GuiGeneric getGui() {
         switch (getMode()) {
             case DIAGRAMS:
                 return guiDiagrams;

@@ -1,8 +1,8 @@
 package main.fr.birdo.electrictools.utils;
 
-public class GenericGui {
+public class GuiGeneric {
 
-    public GenericGui() {
+    public GuiGeneric() {
     }
 
     public java.util.List<Button> getButtons() {
