@@ -1,5 +1,6 @@
 package main.fr.birdo.electrictools.events;
 
+import main.fr.birdo.electrictools.components.Components;
 import main.fr.birdo.electrictools.guis.GuiDiagrams;
 import main.fr.birdo.electrictools.utils.AdaptativeScreen;
 import main.fr.birdo.electrictools.utils.Button;

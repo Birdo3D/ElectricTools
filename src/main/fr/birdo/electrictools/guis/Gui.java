@@ -38,6 +38,7 @@ public class Gui extends JPanel {
         graphics = g;
         //Gui
         graphics.drawImage(ElectricTools.getResource("1.png"), 0, 0, frame.getWidth(), frame.getHeight(), null);
+        graphics.drawImage(ElectricTools.getResource("2.png"), AdaptativeScreen.getWidth(2), AdaptativeScreen.getHeight(150 - 8), AdaptativeScreen.getWidth(264), AdaptativeScreen.getHeight(686 - 8), null);
         switch (getMode()) {
             case DIAGRAMS:
                 GuiDiagrams.drawScreen(g);
@@ -47,7 +48,7 @@ public class Gui extends JPanel {
                 break;
         }
         //Background
-        g.drawImage(ElectricTools.getResource("unknown3.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
+        g.drawImage(ElectricTools.getResource("unknown4.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
             Image buttonTexture = button.getTexture();

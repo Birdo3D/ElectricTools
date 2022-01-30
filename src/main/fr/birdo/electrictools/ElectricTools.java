@@ -1,5 +1,6 @@
 package main.fr.birdo.electrictools;
 
+import main.fr.birdo.electrictools.components.Components;
 import main.fr.birdo.electrictools.guis.Gui;
 
 import javax.imageio.ImageIO;
@@ -10,6 +11,7 @@ import java.io.IOException;
 public class ElectricTools extends JPanel {
 
     public static void main(String[] args) {
+        Components.initComponents();
         Gui.initGui();
         updater();
     }

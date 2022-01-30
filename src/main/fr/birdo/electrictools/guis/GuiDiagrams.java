@@ -1,8 +1,10 @@
 package main.fr.birdo.electrictools.guis;
 
 import main.fr.birdo.electrictools.ElectricTools;
+import main.fr.birdo.electrictools.components.Components;
 import main.fr.birdo.electrictools.utils.AdaptativeScreen;
 import main.fr.birdo.electrictools.utils.Button;
+import main.fr.birdo.electrictools.utils.ElectricalComponentGeneric;
 import main.fr.birdo.electrictools.utils.GuiGeneric;
 
 import java.awt.*;
@@ -30,8 +32,17 @@ public class GuiDiagrams extends GuiGeneric {
         for (int i = 0; i < 25; i++) {//Horizontal
             graphics.drawLine(AdaptativeScreen.getWidth(270), AdaptativeScreen.getHeight(154) + (i * rectSize), AdaptativeScreen.getWidth(1218), AdaptativeScreen.getHeight(154) + (i * rectSize));
         }
-        for (int i = 0; i < 47; i++) {//Vertical
+        for (int i = 0; i < 48; i++) {//Vertical
             graphics.drawLine(AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(146), AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(682));
+        }
+        //Components List
+        graphics.setColor(Color.ORANGE);
+        graphics.drawString("Electrical :", AdaptativeScreen.getWidth(20), AdaptativeScreen.getHeight(170));
+        int i = 1;
+        graphics.setColor(Color.PINK);
+        for (ElectricalComponentGeneric electricalComponent : Components.getElectricalComponents()) {
+            graphics.drawString("- " + electricalComponent.getName(), AdaptativeScreen.getWidth(40), AdaptativeScreen.getHeight(170) + (i * 20));
+            i++;
         }
     }
 
@@ -46,6 +57,9 @@ public class GuiDiagrams extends GuiGeneric {
 
     public static boolean isGrid(int x, int y) {
         return (x >= AdaptativeScreen.getWidth(270)) && (x <= AdaptativeScreen.getWidth(1218)) && (y >= AdaptativeScreen.getHeight(146)) && (y <= AdaptativeScreen.getHeight(682));
+    }
+
+    public static void addElementOnGrid(ElectricalComponentGeneric component, int x, int y) {
     }
 
     public java.util.List<Button> getButtons() {
