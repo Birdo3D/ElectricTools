@@ -10,6 +10,7 @@ import main.fr.birdo.electrictools.utils.GuiGeneric;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GuiDiagrams extends GuiGeneric {
 
@@ -18,8 +19,8 @@ public class GuiDiagrams extends GuiGeneric {
 
     public GuiDiagrams() {
         //Buttons Panel 1 (Mode selector)
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(-2, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
         //Buttons Panel 2
         buttons.add(new main.fr.birdo.electrictools.utils.Button(1, ElectricTools.getResource("b.png"), 31, 69, 90, 54).setHoverTexture(ElectricTools.getResource("b.hover.png")));
         buttons.add(new main.fr.birdo.electrictools.utils.Button(2, ElectricTools.getResource("b.png"), 178, 69, 90, 54).setHoverTexture(ElectricTools.getResource("b.hover.png")));
@@ -69,16 +70,15 @@ public class GuiDiagrams extends GuiGeneric {
     public void onButtonClicked(int buttonIndex) {
         switch (buttonIndex) {
             case -1:
-                Gui.setMode(Gui.Mode.DIAGRAMS);
-                break;
-            case -2:
                 Gui.setMode(Gui.Mode.TEST);
+                for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
+                    button.setHover(button.getId() == 0);
                 break;
             case 1:
-                setGridZoomValue(getGridZoomValue() + 4);
+                setGridZoomValue(getGridZoomValue() - 4);
                 break;
             case 2:
-                setGridZoomValue(getGridZoomValue() - 4);
+                setGridZoomValue(getGridZoomValue() + 4);
                 break;
         }
     }
