@@ -14,8 +14,8 @@ public class GuiTest extends GuiGeneric {
     private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
 
     public GuiTest() {
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, null, 102, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, null, 373, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
     }
 
     public static void drawScreen(Graphics graphics) {

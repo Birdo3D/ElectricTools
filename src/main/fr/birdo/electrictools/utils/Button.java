@@ -4,8 +4,9 @@ import java.awt.image.BufferedImage;
 
 public class Button {
 
-    private final BufferedImage texture;
+    private BufferedImage texture;
     private BufferedImage hoverTexture;
+    private final String text;
     private final int index;
     private final int posX;
     private final int posY;
@@ -13,21 +14,20 @@ public class Button {
     private final int sizeY;
     private boolean isHover;
 
-    public Button(int index, BufferedImage texture, int posX, int posY, int sizeX, int sizeY) {
+    public Button(int index, String text, int posX, int posY, int sizeX, int sizeY) {
         this.index = index;
         this.posX = posX;
         this.posY = posY;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.texture = texture;
-        this.hoverTexture = texture;
+        this.text = text;
     }
 
     public void setHover(boolean hover) {
         this.isHover = hover;
     }
 
-    public Boolean isHover(){
+    public Boolean isHover() {
         return this.isHover;
     }
 
@@ -37,6 +37,24 @@ public class Button {
 
     public BufferedImage getHoverTexture() {
         return this.hoverTexture;
+    }
+
+    public String getText() {
+        return this.text;
+    }
+
+    public Boolean hasTexture() {
+        return this.texture != null;
+    }
+
+    public Boolean hasText() {
+        return this.text != null;
+    }
+
+    public Button setTexture(BufferedImage texture) {
+        this.texture = texture;
+        this.hoverTexture = texture;
+        return this;
     }
 
     public Button setHoverTexture(BufferedImage texture) {

@@ -51,10 +51,15 @@ public class Gui extends JPanel {
         g.drawImage(ElectricTools.getResource("unknown4.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
-            Image buttonTexture = button.getTexture();
-            if (button.isHover())
-                buttonTexture = (button).getHoverTexture();
-            graphics.drawImage(buttonTexture, AdaptativeScreen.getWidth(button.getPosX()), AdaptativeScreen.getHeight(button.getPosY()), AdaptativeScreen.getWidth(button.getSizeX()), AdaptativeScreen.getHeight(button.getSizeY()), null);
+            if (button.hasTexture()) {
+                Image buttonTexture = button.getTexture();
+                if (button.isHover())
+                    buttonTexture = (button).getHoverTexture();
+                graphics.drawImage(buttonTexture, AdaptativeScreen.getWidth(button.getPosX()), AdaptativeScreen.getHeight(button.getPosY()), AdaptativeScreen.getWidth(button.getSizeX()), AdaptativeScreen.getHeight(button.getSizeY()), null);
+            }
+            if (button.hasText()) {
+                graphics.drawString(button.getText(), AdaptativeScreen.getWidth(button.getPosX()), AdaptativeScreen.getHeight(button.getPosY()));
+            }
         }
     }
 

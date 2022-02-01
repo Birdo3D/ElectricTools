@@ -19,11 +19,13 @@ public class GuiDiagrams extends GuiGeneric {
 
     public GuiDiagrams() {
         //Buttons Panel 1 (Mode selector)
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, ElectricTools.getResource("btn.png"), 102, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, ElectricTools.getResource("btn.png"), 373, 12, 198, 27).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, null, 102, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, null, 373, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
         //Buttons Panel 2
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, ElectricTools.getResource("b.png"), 31, 69, 90, 54).setHoverTexture(ElectricTools.getResource("b.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(2, ElectricTools.getResource("b.png"), 178, 69, 90, 54).setHoverTexture(ElectricTools.getResource("b.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, null, 31, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(2, null, 178, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")));
+        //Buttons Test
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(3, "Test_Button", 400, 69, 90, 54));
     }
 
     public static void drawScreen(Graphics graphics) {
@@ -85,6 +87,9 @@ public class GuiDiagrams extends GuiGeneric {
                 break;
             case 2:
                 setGridZoomValue(getGridZoomValue() + 4);
+                break;
+            case 3:
+                System.out.println("Test button is pressed !");
                 break;
         }
     }
