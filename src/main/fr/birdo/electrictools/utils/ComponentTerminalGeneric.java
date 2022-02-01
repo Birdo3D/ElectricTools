@@ -1,12 +1,12 @@
 package main.fr.birdo.electrictools.utils;
 
-public class ElectricalTerminalGeneric {
+public class ComponentTerminalGeneric {
 
     private final int name;
     private final int posX;
     private final int posY;
 
-    public ElectricalTerminalGeneric(int name, int posX, int posY) {
+    public ComponentTerminalGeneric(int name, int posX, int posY) {
         this.name = name;
         this.posX = posX;
         this.posY = posY;

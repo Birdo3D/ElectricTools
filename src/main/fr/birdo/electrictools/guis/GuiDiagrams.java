@@ -4,7 +4,7 @@ import main.fr.birdo.electrictools.ElectricTools;
 import main.fr.birdo.electrictools.components.Components;
 import main.fr.birdo.electrictools.utils.AdaptativeScreen;
 import main.fr.birdo.electrictools.utils.Button;
-import main.fr.birdo.electrictools.utils.ElectricalComponentGeneric;
+import main.fr.birdo.electrictools.utils.ComponentGeneric;
 import main.fr.birdo.electrictools.utils.GuiGeneric;
 
 import java.awt.*;
@@ -37,13 +37,19 @@ public class GuiDiagrams extends GuiGeneric {
             graphics.drawLine(AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(146), AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(682));
         }
         //Components List
-        graphics.setColor(Color.ORANGE);
-        graphics.drawString("Electrical :", AdaptativeScreen.getWidth(20), AdaptativeScreen.getHeight(170));
-        int i = 1;
-        graphics.setColor(Color.PINK);
-        for (ElectricalComponentGeneric electricalComponent : Components.getElectricalComponents()) {
-            graphics.drawString("- " + electricalComponent.getName(), AdaptativeScreen.getWidth(40), AdaptativeScreen.getHeight(170) + (i * 20));
-            i++;
+        int i = 0;
+        int j = 0;
+        for (Components.Category category : Components.Category.values()) {
+            graphics.setColor(Color.ORANGE);
+            graphics.drawString(category.getName() + " :", AdaptativeScreen.getWidth(20), AdaptativeScreen.getHeight(170) + ((i + j) * 20));
+            j++;
+            for (ComponentGeneric componentGeneric : Components.getComponents()) {
+                if (componentGeneric.getCategory() == category) {
+                    graphics.setColor(Color.PINK);
+                    graphics.drawString("- " + componentGeneric.getName(), AdaptativeScreen.getWidth(40), AdaptativeScreen.getHeight(170) + ((i + 1) * 20));
+                    i++;
+                }
+            }
         }
     }
 
@@ -60,7 +66,7 @@ public class GuiDiagrams extends GuiGeneric {
         return (x >= AdaptativeScreen.getWidth(270)) && (x <= AdaptativeScreen.getWidth(1218)) && (y >= AdaptativeScreen.getHeight(146)) && (y <= AdaptativeScreen.getHeight(682));
     }
 
-    public static void addElementOnGrid(ElectricalComponentGeneric component, int x, int y) {
+    public static void addElementOnGrid(ComponentGeneric component, int x, int y) {
     }
 
     public java.util.List<Button> getButtons() {

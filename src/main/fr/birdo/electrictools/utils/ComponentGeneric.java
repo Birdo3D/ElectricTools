@@ -1,29 +1,37 @@
 package main.fr.birdo.electrictools.utils;
 
+import main.fr.birdo.electrictools.components.Components;
+
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElectricalComponentGeneric {
+public class ComponentGeneric {
 
     private final String name;
+    private final Components.Category category;
     private final int index;
     private final BufferedImage texture;
-    private final List<ElectricalTerminalGeneric> terminals = new ArrayList<>();
+    private final List<ComponentTerminalGeneric> terminals = new ArrayList<>();
 
-    public ElectricalComponentGeneric(String name, int index, BufferedImage texture) {
+    public ComponentGeneric(String name, Components.Category category, int index, BufferedImage texture) {
         this.name = name;
+        this.category = category;
         this.index = index;
         this.texture = texture;
     }
 
-    public ElectricalComponentGeneric addTerminal(ElectricalTerminalGeneric terminal) {
+    public ComponentGeneric addTerminal(ComponentTerminalGeneric terminal) {
         this.terminals.add(terminal);
         return this;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public Components.Category getCategory() {
+        return this.category;
     }
 
     public Integer getId() {
@@ -34,7 +42,7 @@ public class ElectricalComponentGeneric {
         return this.texture;
     }
 
-    public List<ElectricalTerminalGeneric> getTerminals() {
+    public List<ComponentTerminalGeneric> getTerminals() {
         return this.terminals;
     }
 }
