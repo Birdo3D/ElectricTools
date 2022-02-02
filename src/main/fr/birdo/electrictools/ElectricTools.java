@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
 public class ElectricTools extends JPanel {
 
@@ -16,14 +17,19 @@ public class ElectricTools extends JPanel {
         updater();
     }
 
+    @SuppressWarnings({"InfiniteLoopStatement", "BusyWait", "deprecation"})
     public static void updater() {
-        while (true){
+        while (true) {
             try {
-                Thread.sleep(1000/30);
-                //Code to tick
+                Thread.sleep(1000 / 30);
+                /* Code to tick */
                 Gui.frame.remove(Gui.contentPane);
                 Gui.frame.revalidate();
                 Gui.frame.repaint();
+                if (Gui.frame.getWidth() < Gui.width || Gui.frame.getHeight() < Gui.height) {
+                    Gui.frame.resize(Gui.width, Gui.height);
+                    Gui.frame.setLocationRelativeTo(null);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -32,7 +38,7 @@ public class ElectricTools extends JPanel {
 
     public static BufferedImage getResource(String resource) {
         try {
-            return ImageIO.read(ElectricTools.class.getResourceAsStream("/main/resources/textures/" + resource));
+            return ImageIO.read(Objects.requireNonNull(ElectricTools.class.getResourceAsStream("/main/resources/textures/" + resource)));
         } catch (IOException e) {
             throw new IllegalArgumentException("Error - Resource Finder");
         }

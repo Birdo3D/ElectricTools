@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class GuiDiagrams extends GuiGeneric {
 
-    private static final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
+    private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
     private static int zoomValue = 0;
 
     public GuiDiagrams() {
@@ -42,10 +42,10 @@ public class GuiDiagrams extends GuiGeneric {
         //Grid
         int rectSize = AdaptativeScreen.get(Gui.width + Gui.height, Gui.frame.getWidth() + Gui.frame.getHeight(), 20 + zoomValue);
         graphics.setColor(Color.GRAY);
-        for (int i = 0; i < 25; i++) {//Horizontal
+        for (int i = 0; i < AdaptativeScreen.getHeight(25); i++) {//Horizontal 25
             graphics.drawLine(AdaptativeScreen.getWidth(270), AdaptativeScreen.getHeight(154) + (i * rectSize), AdaptativeScreen.getWidth(1218), AdaptativeScreen.getHeight(154) + (i * rectSize));
         }
-        for (int i = 0; i < 48; i++) {//Vertical
+        for (int i = 0; i < AdaptativeScreen.getWidth(48); i++) {//Vertical 48
             graphics.drawLine(AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(146), AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(682));
         }
     }
