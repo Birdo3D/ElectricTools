@@ -9,6 +9,6 @@ public class GuiGeneric {
         return null;
     }
 
-    public void onButtonClicked(int buttonIndex) {
+    public void onButtonClicked(int buttonIndex, int mouseButton, int clickCount) {
     }
 }

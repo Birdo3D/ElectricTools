@@ -16,7 +16,16 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
     public void mousePressed(java.awt.event.MouseEvent e) {
         for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
             if (isButton(button, e.getX(), e.getY()))
-                Gui.getGui().onButtonClicked(button.getId());
+                Gui.getGui().onButtonClicked(button.getId(), e.getButton(), e.getClickCount());
+        if (Gui.getMode() == Gui.Mode.DIAGRAMS && GuiDiagrams.isGrid(e.getX(), e.getY()))
+            switch (e.getButton()) {
+                case 4:
+                    GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() - 4);
+                    break;
+                case 5:
+                    GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() + 4);
+                    break;
+            }
     }
 
     public void mouseClicked(java.awt.event.MouseEvent e) {

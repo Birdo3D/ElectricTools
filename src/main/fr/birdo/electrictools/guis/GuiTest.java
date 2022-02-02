@@ -26,7 +26,7 @@ public class GuiTest extends GuiGeneric {
         return this.buttons;
     }
 
-    public void onButtonClicked(int buttonIndex) {
+    public void onButtonClicked(int buttonIndex, int mouseButton, int clickCount) {
         switch (buttonIndex) {
             case 1:
                 Gui.setMode(Gui.Mode.DIAGRAMS);
