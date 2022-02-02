@@ -2,11 +2,10 @@ package main.fr.birdo.electrictools.guis;
 
 import main.fr.birdo.electrictools.ElectricTools;
 import main.fr.birdo.electrictools.components.Components;
-import main.fr.birdo.electrictools.utils.AdaptativeScreen;
+import main.fr.birdo.electrictools.utils.*;
 import main.fr.birdo.electrictools.utils.Button;
-import main.fr.birdo.electrictools.utils.ComponentGeneric;
-import main.fr.birdo.electrictools.utils.GuiGeneric;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,11 +27,11 @@ public class GuiDiagrams extends GuiGeneric {
         int k = 0;
         int j = 0;
         for (Components.Category category : Components.Category.values()) {
-            buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, category.getName() + " :", 20, 170, 90, 20).setTextColor(Color.ORANGE).setPosModifier(0, ((k + j) * 20)).setTextCenter(false));
+            buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, category.getName() + " :", 20, 170, Text.getLength(category.getName() + " :"), 10).setTextColor(Color.ORANGE).setPosModifier(0, ((k + j) * 20)).setTextCenter(false).setResizable(false));
             j++;
             for (ComponentGeneric componentGeneric : Components.getComponents()) {
                 if (componentGeneric.getCategory() == category) {
-                    buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, "- " + componentGeneric.getName(), 40, 170, 90, 20).setTextColor(Color.PINK).setPosModifier(0, ((k + 1) * 20)).setTextCenter(false));
+                    buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, "- " + componentGeneric.getName(), 40, 170, Text.getLength("- " + componentGeneric.getName()), 10).setTextColor(Color.PINK).setPosModifier(0, ((k + 1) * 20)).setTextCenter(false).setResizable(false));
                     k++;
                 }
             }
@@ -84,9 +83,6 @@ public class GuiDiagrams extends GuiGeneric {
                 break;
             case 2:
                 setGridZoomValue(getGridZoomValue() + 4);
-                break;
-            case 3:
-                System.out.println("Test button is pressed !");
                 break;
         }
     }

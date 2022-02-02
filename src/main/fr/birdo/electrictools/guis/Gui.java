@@ -48,16 +48,22 @@ public class Gui extends JPanel {
                 break;
         }
         //Background
-        g.drawImage(ElectricTools.getResource("unknown4.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
+        g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
             int posX = AdaptativeScreen.getWidth(button.getPosX()) + button.getPosXModifier();
             int posY = AdaptativeScreen.getWidth(button.getPosY()) + button.getPosYModifier();
             if (button.hasTexture()) {
                 Image buttonTexture = button.getTexture();
+                int sizeX = button.getSizeX();
+                int sizeY = button.getSizeY();
+                if (button.isResizable()) {
+                    sizeX = AdaptativeScreen.getWidth(button.getSizeX());
+                    sizeY = AdaptativeScreen.getHeight(button.getSizeY());
+                }
                 if (button.isHover())
                     buttonTexture = (button).getHoverTexture();
-                graphics.drawImage(buttonTexture, posX, posY, AdaptativeScreen.getWidth(button.getSizeX()), AdaptativeScreen.getHeight(button.getSizeY()), null);
+                graphics.drawImage(buttonTexture, posX, posY, sizeX, sizeY, null);
             }
             if (button.hasText()) {
                 JLabel jlabel = new JLabel(button.getText());

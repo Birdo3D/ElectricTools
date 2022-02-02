@@ -9,6 +9,7 @@ public class Button {
     private BufferedImage hoverTexture;
     private final String text;
     private boolean centerText = true;
+    private boolean isResizable = true;
     private Color textColor;
     private final int index;
     private final int posX;
@@ -30,6 +31,15 @@ public class Button {
 
     public void setHover(boolean hover) {
         this.isHover = hover;
+    }
+
+    public Button setResizable(boolean resizable) {
+        this.isResizable = resizable;
+        return this;
+    }
+
+    public boolean isResizable() {
+        return this.isResizable;
     }
 
     public Button setTextColor(Color color) {
