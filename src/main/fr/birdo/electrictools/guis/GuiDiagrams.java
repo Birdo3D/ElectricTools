@@ -14,18 +14,29 @@ import java.util.Objects;
 
 public class GuiDiagrams extends GuiGeneric {
 
-    private final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
+    private static final List<main.fr.birdo.electrictools.utils.Button> buttons = new ArrayList<>();
     private static int zoomValue = 0;
 
     public GuiDiagrams() {
         //Buttons Panel 1 (Mode selector)
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, null, 102, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, null, 373, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(0, "Schémas", 102, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(-1, "Test", 373, 12, 198, 27).setTexture(ElectricTools.getResource("btn.png")).setHoverTexture(ElectricTools.getResource("btn.hover.png")));
         //Buttons Panel 2
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, null, 31, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")));
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(2, null, 178, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")));
-        //Buttons Test
-        buttons.add(new main.fr.birdo.electrictools.utils.Button(3, "Test_Button", 400, 69, 90, 54));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(1, "-", 31, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")).setTextColor(Color.BLUE));
+        buttons.add(new main.fr.birdo.electrictools.utils.Button(2, "+", 178, 69, 90, 54).setTexture(ElectricTools.getResource("b.png")).setHoverTexture(ElectricTools.getResource("b.hover.png")).setTextColor(Color.BLUE));
+        //Components List
+        int k = 0;
+        int j = 0;
+        for (Components.Category category : Components.Category.values()) {
+            buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, category.getName() + " :", 20, 170, 90, 20).setTextColor(Color.ORANGE).setPosModifier(0, ((k + j) * 20)).setTextCenter(false));
+            j++;
+            for (ComponentGeneric componentGeneric : Components.getComponents()) {
+                if (componentGeneric.getCategory() == category) {
+                    buttons.add(new main.fr.birdo.electrictools.utils.Button(k + j + 4, "- " + componentGeneric.getName(), 40, 170, 90, 20).setTextColor(Color.PINK).setPosModifier(0, ((k + 1) * 20)).setTextCenter(false));
+                    k++;
+                }
+            }
+        }
     }
 
     public static void drawScreen(Graphics graphics) {
@@ -37,21 +48,6 @@ public class GuiDiagrams extends GuiGeneric {
         }
         for (int i = 0; i < 48; i++) {//Vertical
             graphics.drawLine(AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(146), AdaptativeScreen.getWidth(278) + (i * rectSize), AdaptativeScreen.getHeight(682));
-        }
-        //Components List
-        int i = 0;
-        int j = 0;
-        for (Components.Category category : Components.Category.values()) {
-            graphics.setColor(Color.ORANGE);
-            graphics.drawString(category.getName() + " :", AdaptativeScreen.getWidth(20), AdaptativeScreen.getHeight(170) + ((i + j) * 20));
-            j++;
-            for (ComponentGeneric componentGeneric : Components.getComponents()) {
-                if (componentGeneric.getCategory() == category) {
-                    graphics.setColor(Color.PINK);
-                    graphics.drawString("- " + componentGeneric.getName(), AdaptativeScreen.getWidth(40), AdaptativeScreen.getHeight(170) + ((i + 1) * 20));
-                    i++;
-                }
-            }
         }
     }
 
@@ -76,6 +72,7 @@ public class GuiDiagrams extends GuiGeneric {
     }
 
     public void onButtonClicked(int buttonIndex) {
+        System.out.println(buttonIndex);
         switch (buttonIndex) {
             case -1:
                 Gui.setMode(Gui.Mode.TEST);

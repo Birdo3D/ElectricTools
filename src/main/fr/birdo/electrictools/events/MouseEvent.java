@@ -50,6 +50,8 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     public boolean isButton(Button button, int x, int y) {
-        return (x >= AdaptativeScreen.getWidth(button.getPosX()) && x <= (AdaptativeScreen.getWidth(button.getPosX()) + AdaptativeScreen.getWidth(button.getSizeX()))) && ((y - 31) >= AdaptativeScreen.getHeight(button.getPosY()) && (y - 31) <= (AdaptativeScreen.getHeight(button.getPosY()) + AdaptativeScreen.getHeight(button.getSizeY())));
+        int posX = AdaptativeScreen.getWidth(button.getPosX()) + button.getPosXModifier();
+        int posY = AdaptativeScreen.getWidth(button.getPosY()) + button.getPosYModifier();
+        return (x >= posX && x <= (posX + AdaptativeScreen.getWidth(button.getSizeX()))) && ((y - 31) >= posY && (y - 31) <= (posY + AdaptativeScreen.getHeight(button.getSizeY())));
     }
 }

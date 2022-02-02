@@ -51,14 +51,25 @@ public class Gui extends JPanel {
         g.drawImage(ElectricTools.getResource("unknown4.png"), 0, 0, AdaptativeScreen.get(width, frame.getWidth(), 1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
+            int posX = AdaptativeScreen.getWidth(button.getPosX()) + button.getPosXModifier();
+            int posY = AdaptativeScreen.getWidth(button.getPosY()) + button.getPosYModifier();
             if (button.hasTexture()) {
                 Image buttonTexture = button.getTexture();
                 if (button.isHover())
                     buttonTexture = (button).getHoverTexture();
-                graphics.drawImage(buttonTexture, AdaptativeScreen.getWidth(button.getPosX()), AdaptativeScreen.getHeight(button.getPosY()), AdaptativeScreen.getWidth(button.getSizeX()), AdaptativeScreen.getHeight(button.getSizeY()), null);
+                graphics.drawImage(buttonTexture, posX, posY, AdaptativeScreen.getWidth(button.getSizeX()), AdaptativeScreen.getHeight(button.getSizeY()), null);
             }
             if (button.hasText()) {
-                graphics.drawString(button.getText(), AdaptativeScreen.getWidth(button.getPosX()), AdaptativeScreen.getHeight(button.getPosY()));
+                JLabel jlabel = new JLabel(button.getText());
+                int x = posX;
+                int y = posY + 8;
+                if (button.isCenterText()) {
+                    x = posX + AdaptativeScreen.getWidth(button.getSizeX()) / 2 - jlabel.getFontMetrics(jlabel.getFont()).stringWidth(jlabel.getText()) / 2;
+                    y = posY + AdaptativeScreen.getHeight(button.getSizeY()) / 2 + 8 - 4;
+                }
+                if (button.hasTextColor())
+                    graphics.setColor(button.getTextColor());
+                graphics.drawString(button.getText(), x, y);
             }
         }
     }
