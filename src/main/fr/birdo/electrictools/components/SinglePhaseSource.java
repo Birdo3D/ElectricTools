@@ -6,6 +6,6 @@ import main.fr.birdo.electrictools.utils.ComponentGeneric;
 public class SinglePhaseSource extends ComponentGeneric {
 
     public SinglePhaseSource() {
-        super("Source monophasée", Components.Category.ELECTRIC, 0, ElectricTools.getResource("1.png"));
+        super("Source monophasée", Components.Category.ELECTRIC, 0, ElectricTools.getResource("test.png"));
     }
 }

@@ -17,7 +17,7 @@ public class ElectricTools extends JPanel {
         updater();
     }
 
-    @SuppressWarnings({"InfiniteLoopStatement", "BusyWait", "deprecation"})
+    @SuppressWarnings({"InfiniteLoopStatement", "BusyWait"})
     public static void updater() {
         while (true) {
             try {
@@ -26,10 +26,6 @@ public class ElectricTools extends JPanel {
                 Gui.frame.remove(Gui.contentPane);
                 Gui.frame.revalidate();
                 Gui.frame.repaint();
-                if (Gui.frame.getWidth() < Gui.width || Gui.frame.getHeight() < Gui.height) {
-                    Gui.frame.resize(Gui.width, Gui.height);
-                    Gui.frame.setLocationRelativeTo(null);
-                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

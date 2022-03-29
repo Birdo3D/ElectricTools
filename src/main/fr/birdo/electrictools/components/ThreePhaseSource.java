@@ -6,6 +6,6 @@ import main.fr.birdo.electrictools.utils.ComponentGeneric;
 public class ThreePhaseSource extends ComponentGeneric {
 
     public ThreePhaseSource() {
-        super("Source triphasée", Components.Category.ELECTRIC, 1, ElectricTools.getResource("1.png"));
+        super("Source triphasée", Components.Category.ELECTRIC, 1, ElectricTools.getResource("test.png"));
     }
 }

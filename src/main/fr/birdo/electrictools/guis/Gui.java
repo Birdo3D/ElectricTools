@@ -20,6 +20,7 @@ public class Gui extends JPanel {
     public static Graphics graphics;
     private static final GuiGeneric guiDiagrams = new GuiDiagrams();
     private static final GuiGeneric guiTest = new GuiTest();
+    public static boolean test = true;
 
     public static void initGui() {
         frame.addMouseListener(new MouseEvent());
@@ -31,6 +32,7 @@ public class Gui extends JPanel {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(contentPane);
+        frame.setMinimumSize(new Dimension(width, height));
     }
 
     public void paintComponent(Graphics g) {
@@ -48,7 +50,8 @@ public class Gui extends JPanel {
                 break;
         }
         //Background
-        g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.getWidth(1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
+        if (test)
+            g.drawImage(ElectricTools.getResource("background.png"), 0, 0, AdaptativeScreen.getWidth(1225) - 15, AdaptativeScreen.get(height, frame.getHeight() - 40, 687), null);
         //Draw Buttons
         for (Button button : Objects.requireNonNull(getGui()).getButtons()) {
             int posX = AdaptativeScreen.getWidth(button.getPosX()) + button.getPosXModifier();

@@ -4,6 +4,7 @@ import main.fr.birdo.electrictools.guis.GuiDiagrams;
 import main.fr.birdo.electrictools.utils.AdaptativeScreen;
 import main.fr.birdo.electrictools.utils.Button;
 import main.fr.birdo.electrictools.guis.Gui;
+import main.fr.birdo.electrictools.utils.Pos;
 
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -17,21 +18,23 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
         for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
             if (isButton(button, e.getX(), e.getY()))
                 Gui.getGui().onButtonClicked(button.getId(), e.getButton(), e.getClickCount());
-        if (Gui.getMode() == Gui.Mode.DIAGRAMS && GuiDiagrams.isGrid(e.getX(), e.getY()))
-            switch (e.getButton()) {
-                case 4:
-                    GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() - 4);
-                    break;
-                case 5:
-                    GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() + 4);
-                    break;
+        if (e.getButton() == 3) {
+            GuiDiagrams.setComponentOnCursor(null);
+        }
+        if (e.getButton() == 1) {
+            if (GuiDiagrams.isGrid(e.getX(), e.getY())) {
+                if (GuiDiagrams.cursor != null) {
+                    GuiDiagrams.componentsOnGrid.add(new Pos(GuiDiagrams.cursor, GuiDiagrams.setGridX(e.getX() - GuiDiagrams.cursor.getTexture().getWidth() / 2 - 8), GuiDiagrams.setGridY(e.getY() - GuiDiagrams.cursor.getTexture().getHeight() / 2 - 31)));
+                }
             }
+        }
     }
 
     public void mouseClicked(java.awt.event.MouseEvent e) {
     }
 
     public void mouseReleased(java.awt.event.MouseEvent e) {
+        GuiDiagrams.setClicked(false);
     }
 
     public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -41,21 +44,25 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
     }
 
     public void mouseDragged(java.awt.event.MouseEvent e) {
+        GuiDiagrams.setCursor(e.getX(), e.getY());
+        GuiDiagrams.setClicked(true);
     }
 
     public void mouseMoved(java.awt.event.MouseEvent e) {
         for (Button button : Objects.requireNonNull(Gui.getGui()).getButtons())
             button.setHover(isButton(button, e.getX(), e.getY()));
+        GuiDiagrams.setCursor(e.getX(), e.getY());
     }
 
     public void mouseWheelMoved(MouseWheelEvent e) {
         //Grid zoom (for GuiDiagrams)
-        if (Gui.getMode() == Gui.Mode.DIAGRAMS && GuiDiagrams.isGrid(e.getX(), e.getY()))
+        if (Gui.getMode() == Gui.Mode.DIAGRAMS && GuiDiagrams.isGrid(e.getX(), e.getY())) {
             if (e.getWheelRotation() < 0) {
                 GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() + 1);
             } else {
                 GuiDiagrams.setGridZoomValue(GuiDiagrams.getGridZoomValue() - 1);
             }
+        }
     }
 
     public boolean isButton(Button button, int x, int y) {
@@ -67,6 +74,6 @@ public class MouseEvent implements MouseListener, MouseMotionListener, MouseWhee
             sizeX = AdaptativeScreen.getWidth(button.getSizeX());
             sizeY = AdaptativeScreen.getHeight(button.getSizeY());
         }
-        return (x >= posX && x <= (posX + sizeX)) && ((y - 31) >= posY && (y - 31) <= (posY + sizeY));
+        return ((x - 8) >= posX && (x - 8) <= (posX + sizeX)) && ((y - 31) >= posY && (y - 31) <= (posY + sizeY));
     }
 }
