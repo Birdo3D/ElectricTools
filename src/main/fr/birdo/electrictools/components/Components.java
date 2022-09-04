@@ -10,8 +10,8 @@ public class Components {
     private static final List<ComponentGeneric> components = new ArrayList<>();
 
     public static void initComponents() {
-        components.add(new SinglePhaseSource());
-        components.add(new ThreePhaseSource());
+        //components.add(new SinglePhaseSource());
+        //components.add(new ThreePhaseSource());
     }
 
     public static List<ComponentGeneric> getComponents() {
