@@ -15,7 +15,7 @@ public class GuiStart extends Gui {
     public GuiStart() {
         super("gui_start", "Welcome to ElectricTools !", 800, 400);
         setContentPane(this);
-        addButton(new Button(0,  "Test Button", 740, 0, 60, 30));
+        addButton(new Button(0, "Test Button", 740, 0, 60, 30));
     }
 
     public void paintComponent(Graphics g) {
@@ -29,10 +29,10 @@ public class GuiStart extends Gui {
         g.drawImage(ResourceLoader.getImage("logo.png"), 5, 5, 20, 20, null);
     }
 
-    public void buttonHover(Button button) {
+    public void buttonIsHover(Button button, boolean hover) {
     }
 
-    public void buttonClicked(Button button) {
+    public void buttonClicked(Button button, int mouseButton, int clickCount) {
         System.out.println("Okkkk");
     }
 }

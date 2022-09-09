@@ -43,6 +43,8 @@ public class Gui extends JPanel {
         this.frame.setSize(this.getSizeX(), this.getSizeY());
         this.frame.setTitle(this.getTitle());
         this.frame.addMouseListener(new GuiEvent());
+        this.frame.addMouseMotionListener(new GuiEvent());
+        this.frame.addMouseWheelListener(new GuiEvent());
         this.frame.setUndecorated(true);
         this.frame.setContentPane(this.contentPane);
         this.frame.setVisible(true);
@@ -94,9 +96,9 @@ public class Gui extends JPanel {
         return this.buttons;
     }
 
-    public void buttonHover(Button button) {
+    public void buttonIsHover(Button button, boolean hover) {
     }
 
-    public void buttonClicked(Button button) {
+    public void buttonClicked(Button button, int mouseButton, int clickCount) {
     }
 }
