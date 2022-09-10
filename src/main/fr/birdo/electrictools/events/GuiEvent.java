@@ -6,6 +6,7 @@ import main.fr.birdo.electrictools.utils.GuiUtilities;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.List;
 
 public class GuiEvent implements MouseListener, MouseMotionListener, MouseWheelListener {
 
@@ -16,11 +17,12 @@ public class GuiEvent implements MouseListener, MouseMotionListener, MouseWheelL
 
     @Override
     public void mousePressed(MouseEvent e) {
-        for (Gui gui : GuiUtilities.getEnableGuis()) {
+        for (int i = 0; i < GuiUtilities.getEnableGuis().size(); i++) {
+            Gui gui = GuiUtilities.getEnableGuis().get(i);
             JFrame frame = (JFrame) e.getComponent();
             if (frame.equals(gui.getFrame()))
                 for (Button button : gui.getButtons())
-                    if (isButton(button, e.getX(), e.getY()))
+                    if (GuiUtilities.isButton(button, e.getX(), e.getY()))
                         gui.buttonClicked(button, e.getButton(), e.getClickCount());
         }
     }
@@ -47,20 +49,16 @@ public class GuiEvent implements MouseListener, MouseMotionListener, MouseWheelL
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        for (Gui gui : GuiUtilities.getEnableGuis()) {
+        /*for (Gui gui : GuiUtilities.getEnableGuis()) {
             JFrame frame = (JFrame) e.getComponent();
             if (frame.equals(gui.getFrame()))
                 for (Button button : gui.getButtons())
-                    gui.buttonIsHover(button, isButton(button, e.getX(), e.getY()));
-        }
+                    button.setHover(isButton(button, e.getX(), e.getY()));
+        }*/
     }
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
 
-    }
-
-    private static boolean isButton(Button button, int x, int y) {
-        return x > button.getPosX() && x < button.getPosX() + button.getSizeX() && y > button.getPosY() && y < button.getPosY() + button.getSizeY();
     }
 }

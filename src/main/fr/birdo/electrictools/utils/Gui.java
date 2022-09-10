@@ -18,6 +18,7 @@ public class Gui extends JPanel {
     private int posX = -1;
     private int posY = -1;
     private List<Button> buttons = new ArrayList<>();
+    private boolean isMaximized;
 
     public Gui(String label, String title, int sizeX, int sizeY) {
         this.label = label;
@@ -96,9 +97,15 @@ public class Gui extends JPanel {
         return this.buttons;
     }
 
-    public void buttonIsHover(Button button, boolean hover) {
+    public void buttonClicked(Button button, int mouseButton, int clickCount) {
     }
 
-    public void buttonClicked(Button button, int mouseButton, int clickCount) {
+    public Gui maximizeGui(boolean isMaximized) {
+        this.isMaximized = isMaximized;
+        return this;
+    }
+
+    public boolean isMaximized() {
+        return this.isMaximized;
     }
 }
