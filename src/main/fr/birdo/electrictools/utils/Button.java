@@ -1,8 +1,5 @@
 package main.fr.birdo.electrictools.utils;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 public class Button {
 
     private final int index;
@@ -22,6 +19,15 @@ public class Button {
 
     public void setHover(boolean hover) {
         this.isHover = hover;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public Button setPosY(int posY) {
+        this.posY = posY;
+        return this;
     }
 
     public Boolean isHover() {
@@ -46,15 +52,5 @@ public class Button {
 
     public int getSizeY() {
         return this.sizeY;
-    }
-
-    public Button setPosX(int posX) {
-        this.posX = posX;
-        return this;
-    }
-
-    public Button setPosY(int posY) {
-        this.posY = posY;
-        return this;
     }
 }

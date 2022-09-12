@@ -6,7 +6,6 @@ import main.fr.birdo.electrictools.utils.Gui;
 import main.fr.birdo.electrictools.utils.GuiUtilities;
 import main.fr.birdo.electrictools.utils.ResourceLoader;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class GuiStart extends Gui {

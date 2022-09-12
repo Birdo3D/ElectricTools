@@ -6,7 +6,6 @@ import main.fr.birdo.electrictools.utils.GuiUtilities;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.List;
 
 public class GuiEvent implements MouseListener, MouseMotionListener, MouseWheelListener {
 
@@ -49,12 +48,7 @@ public class GuiEvent implements MouseListener, MouseMotionListener, MouseWheelL
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        /*for (Gui gui : GuiUtilities.getEnableGuis()) {
-            JFrame frame = (JFrame) e.getComponent();
-            if (frame.equals(gui.getFrame()))
-                for (Button button : gui.getButtons())
-                    button.setHover(isButton(button, e.getX(), e.getY()));
-        }*/
+
     }
 
     @Override

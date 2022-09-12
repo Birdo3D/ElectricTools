@@ -6,7 +6,6 @@ import main.fr.birdo.electrictools.utils.GuiUtilities;
 import main.fr.birdo.electrictools.utils.Mode;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ElectricTools extends JPanel {
 
@@ -17,6 +16,7 @@ public class ElectricTools extends JPanel {
         refresh();
     }
 
+    @SuppressWarnings("BusyWait")
     public static void refresh() {
         while (true) {
             try {
@@ -25,14 +25,14 @@ public class ElectricTools extends JPanel {
                     System.exit(2410);
                 for (Gui gui : GuiUtilities.getEnableGuis()) {
                     GuiUtilities.updateGui(gui);
-                    if (gui.isMaximized()) {
+                    /*if (gui.isMaximized()) {
                         Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration());
                         if ((insets.top > 0 && gui.getPosY() < 0) &&
                                 (insets.left > 0 && gui.getPosX() < 0) &&
                                 (insets.right > 0 && gui.getPosX() == 0 && Toolkit.getDefaultToolkit().getScreenSize().getWidth() - gui.getSizeX() > 0) &&
                                 (insets.bottom > 0 && gui.getPosY() == 0 && Toolkit.getDefaultToolkit().getScreenSize().getHeight() - gui.getSizeY() > 0))
                             GuiUtilities.maximizeGui(gui);
-                    }
+                    }*/
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

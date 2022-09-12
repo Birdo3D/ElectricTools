@@ -1,6 +1,5 @@
 package main.fr.birdo.electrictools.utils;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class GuiUtilities {
     public static void updateGui(Gui gui) {
         Point p = MouseInfo.getPointerInfo().getLocation();
         for (Button button : gui.getButtons())
-            button.setHover(isButton(button, (int) p.getX(), (int) p.getY()));
+            button.setHover(isButton(button, (int) p.getX() - (int) gui.getFrame().getLocation().getX(), (int) p.getY() - (int) gui.getFrame().getLocation().getY()));
         gui.getFrame().remove(gui.getContentPane());
         gui.getFrame().revalidate();
         gui.getFrame().repaint();
