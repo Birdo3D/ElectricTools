@@ -12,6 +12,13 @@ public class ElectricTools extends JPanel {
     public static Mode mode = Mode.DARK_MODE;
 
     public static void main(String[] args) {
+        GuiUtilities.openGui(Guis.loadingGui);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        GuiUtilities.closeGui(Guis.loadingGui);
         GuiUtilities.openGui(Guis.startGui);
         refresh();
     }

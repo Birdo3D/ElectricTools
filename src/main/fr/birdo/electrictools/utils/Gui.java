@@ -19,6 +19,9 @@ public class Gui extends JPanel {
     private int posY = -1;
     private List<Button> buttons = new ArrayList<>();
     private boolean isMaximized;
+    private boolean isDragged = false;
+    private boolean isMovable = true;
+    private ToolBar toolBar;
 
     public Gui(String label, String title, int sizeX, int sizeY) {
         this.label = label;
@@ -47,6 +50,7 @@ public class Gui extends JPanel {
         this.frame.addMouseMotionListener(new GuiEvent());
         this.frame.addMouseWheelListener(new GuiEvent());
         this.frame.setUndecorated(true);
+        this.frame.setBackground(new Color(0, 0, 0, 0));
         this.frame.setContentPane(this.contentPane);
         this.frame.setVisible(true);
     }
@@ -93,6 +97,11 @@ public class Gui extends JPanel {
         return this;
     }
 
+    public Gui setToolbar(ToolBar toolBar) {
+        this.toolBar = toolBar;
+        return this;
+    }
+
     public java.util.List<Button> getButtons() {
         return this.buttons;
     }
@@ -100,12 +109,32 @@ public class Gui extends JPanel {
     public void buttonClicked(Button button, int mouseButton, int clickCount) {
     }
 
-    public Gui maximizeGui(boolean isMaximized) {
+    public void maximizeGui(boolean isMaximized) {
         this.isMaximized = isMaximized;
+    }
+
+    public void setDragged(boolean isDragged) {
+        this.isDragged = isDragged;
+    }
+
+    public Gui setMovable(boolean isMovable) {
+        this.isMovable = isMovable;
         return this;
     }
 
     public boolean isMaximized() {
         return this.isMaximized;
+    }
+
+    public boolean isDragged() {
+        return this.isDragged;
+    }
+
+    public boolean isMovable() {
+        return this.isMovable;
+    }
+
+    public ToolBar getToolBar() {
+        return this.toolBar;
     }
 }

@@ -25,9 +25,8 @@ public class Button {
         this.posX = posX;
     }
 
-    public Button setPosY(int posY) {
+    public void setPosY(int posY) {
         this.posY = posY;
-        return this;
     }
 
     public Boolean isHover() {
