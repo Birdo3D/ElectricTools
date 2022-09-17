@@ -19,7 +19,8 @@ public class ElectricTools extends JPanel {
             throw new RuntimeException(e);
         }
         GuiUtilities.closeGui(Guis.loadingGui);
-        GuiUtilities.openGui(Guis.startGui);
+        //GuiUtilities.openGui(Guis.startGui);
+        GuiUtilities.openGui(Guis.switchboardGui);
         refresh();
     }
 

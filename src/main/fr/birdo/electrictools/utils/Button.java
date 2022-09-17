@@ -5,8 +5,8 @@ public class Button {
     private final int index;
     private int posX;
     private int posY;
-    private final int sizeX;
-    private final int sizeY;
+    private int sizeX;
+    private int sizeY;
     private boolean isHover;
 
     public Button(int index, int posX, int posY, int sizeX, int sizeY) {
@@ -27,6 +27,14 @@ public class Button {
 
     public void setPosY(int posY) {
         this.posY = posY;
+    }
+
+    public void setSizeX(int sizeX) {
+        this.sizeX = sizeX;
+    }
+
+    public void setSizeY(int sizeY) {
+        this.sizeY = sizeY;
     }
 
     public Boolean isHover() {

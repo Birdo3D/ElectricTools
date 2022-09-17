@@ -6,4 +6,5 @@ public class Guis {
 
     public static Gui loadingGui = new GuiLoading();
     public static Gui startGui = new GuiStart();
+    public static Gui switchboardGui = new GuiSwitchboard();
 }
