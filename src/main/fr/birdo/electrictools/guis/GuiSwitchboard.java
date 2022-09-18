@@ -11,7 +11,7 @@ import java.awt.*;
 public class GuiSwitchboard extends Gui {
 
     public GuiSwitchboard() {
-        super("gui_switchboard", "File - Switchboard", 800, 400);
+        super("gui_switchboard", "Untitled - ElectricTools Switchboard", 800, 400);
         setContentPane(this);
         addButton(new ToolbarButton(0, "File", 0));
         addButton(new ToolbarButton(1, "Edit", 1));
