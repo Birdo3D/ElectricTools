@@ -49,6 +49,7 @@ public class Gui extends JPanel {
         this.frame.addMouseListener(new GuiEvent());
         this.frame.addMouseMotionListener(new GuiEvent());
         this.frame.addMouseWheelListener(new GuiEvent());
+        this.frame.setIconImage(ResourceLoader.getImage("logo.png"));
         this.frame.setUndecorated(true);
         this.frame.setBackground(new Color(0, 0, 0, 0));
         this.frame.setContentPane(this.contentPane);
@@ -94,6 +95,9 @@ public class Gui extends JPanel {
 
     public Gui addButton(Button button) {
         this.buttons.add(button);
+        if(button instanceof ToolbarButton)
+            for (Button button1 : ((ToolbarButton) button).getButtonInMenu())
+                this.addButton(button1);
         return this;
     }
 

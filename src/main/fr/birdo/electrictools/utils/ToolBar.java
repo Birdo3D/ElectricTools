@@ -45,8 +45,26 @@ public class ToolBar {
                                         ((ToolbarButton) button).setClicked(true);
                                     }
                         if (((ToolbarButton) button).isClicked()) {
+                            //Hover button
                             g.setColor(Color.CYAN);//Hover button color
                             g.fillRect(button.getPosX(), button.getPosY(), button.getSizeX(), button.getSizeY());
+                            //Draw menu
+                            g.setColor(ElectricTools.mode.getTopBarColor());//Button menu color
+                            g.fillRect(button.getPosX(), button.getPosY() + button.getSizeY(), 300, ((ToolbarButton) button).getButtonInMenu().size() * 20);
+                            for (int i1 = 0; i1 < ((ToolbarButton) button).getButtonInMenu().size(); i1++) {
+                                ScrollingMenuButton smButton = ((ToolbarButton) button).getButtonInMenu().get(i1);
+                                g.setColor(Color.CYAN);//Button hover color
+                                smButton.setPosX(button.getPosX());
+                                smButton.setPosY(button.getPosY() + button.getSizeY() + i1 * 20);
+                                smButton.setSizeX(300);
+                                smButton.setSizeY(20);
+                                if (smButton.isHover())
+                                    g.fillRect(button.getPosX(), button.getPosY() + button.getSizeY() + i1 * 20, 300, 20);
+                                g.setColor(ElectricTools.mode.getBackgroundColor());//Button text color
+                                g.drawString(smButton.getText(), button.getPosX() + 25, button.getPosY() + button.getSizeY() + metrics.getAscent() + i1 * 20);
+                                if (smButton.getIcon() != null)
+                                    g.drawImage(smButton.getIcon(), button.getPosX() + 10, i1 * 20, null);
+                            }
                         }
                         g.setColor(ElectricTools.mode.getBackgroundColor());//Buttons text color
                         g.drawString(((ToolbarButton) button).getText(), buttonX, metrics.getAscent() + 5);
