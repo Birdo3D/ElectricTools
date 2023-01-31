@@ -9,7 +9,7 @@ import java.awt.*;
 public class GuiStart extends Gui {
 
     public GuiStart() {
-        super("gui_start", "Welcome to ElectricTools !", 800, 400);
+        super("gui_start", Translation.getTranslation("gui_start.title"), 800, 400);
         setContentPane(this);
         setToolbar(new ToolBar(this, 30));
         //New switchboard button

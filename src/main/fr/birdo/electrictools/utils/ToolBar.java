@@ -25,7 +25,7 @@ public class ToolBar {
         g.setColor(ElectricTools.mode.getTopBarColor());
         g.fillRect(0, 0, (int) this.gui.getFrame().getSize().getWidth(), this.size);
         //Logo
-        g.drawImage(ResourceLoader.getImage("logo.png"), 10, 5, 20, 20, null);
+        g.drawImage(ResourceLoader.getImage("logo.png"), 10, (this.size - 20) / 2, 20, 20, null);
         //Left Buttons
         int buttonX = 40;
         for (int i = 0; i < this.gui.getButtons().size(); i++) {
@@ -61,13 +61,13 @@ public class ToolBar {
                                 if (smButton.isHover())
                                     g.fillRect(button.getPosX(), button.getPosY() + button.getSizeY() + i1 * 20, 300, 20);
                                 g.setColor(ElectricTools.mode.getBackgroundColor());//Button text color
-                                g.drawString(smButton.getText(), button.getPosX() + 25, button.getPosY() + button.getSizeY() + metrics.getAscent() + i1 * 20);
+                                g.drawString(smButton.getText(), button.getPosX() + 24, button.getPosY() + button.getSizeY() + metrics.getAscent() + i1 * 20);
                                 if (smButton.getIcon() != null)
-                                    g.drawImage(smButton.getIcon(), button.getPosX() + 10, i1 * 20, null);
+                                    g.drawImage(smButton.getIcon(), button.getPosX() + 4, button.getPosY() + button.getSizeY() + i1 * 20 + 2, 16, 16, null);
                             }
                         }
                         g.setColor(ElectricTools.mode.getBackgroundColor());//Buttons text color
-                        g.drawString(((ToolbarButton) button).getText(), buttonX, metrics.getAscent() + 5);
+                        g.drawString(((ToolbarButton) button).getText(), buttonX, metrics.getAscent() + (this.size - 20) / 2);
                         buttonX = buttonX + 20 + metrics.stringWidth(((ToolbarButton) button).getText());
                     }
                 }
@@ -77,7 +77,7 @@ public class ToolBar {
         if (buttonX > 40)
             buttonX = buttonX + 20;
         g.setColor(ElectricTools.mode.getBackgroundColor());//Title text color
-        g.drawString(this.gui.getTitle(), buttonX, metrics.getAscent() + 5);
+        g.drawString(this.gui.getTitle(), buttonX, metrics.getAscent() + (this.size - 20) / 2);
         //Right buttons
         int frameSizeX = (int) this.gui.getFrame().getSize().getWidth();
         for (Button button : this.gui.getButtons()) {
@@ -89,8 +89,8 @@ public class ToolBar {
                         g.fillRect(frameSizeX - 60, 0, 60, this.size);
                     }
                     g.setColor(Color.WHITE);
-                    g.drawLine(frameSizeX - 35, 10, frameSizeX - 25, 20);
-                    g.drawLine(frameSizeX - 25, 10, frameSizeX - 35, 20);
+                    g.drawLine(frameSizeX - 35, (this.size - 10) / 2, frameSizeX - 25, (this.size - 10) / 2 + 10);
+                    g.drawLine(frameSizeX - 25, (this.size - 10) / 2, frameSizeX - 35, (this.size - 10) / 2 + 10);
                     break;
                 case 998:
                     button.setPosX(frameSizeX - 120);
@@ -101,9 +101,9 @@ public class ToolBar {
                     g.setColor(Color.WHITE);
                     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                     if (this.gui.getFrame().getSize().getHeight() == screenSize.getHeight() && this.gui.getFrame().getSize().getWidth() == screenSize.getWidth())
-                        g.drawRect(frameSizeX - 95, 10, 10, 10);
+                        g.drawRect(frameSizeX - 95, (this.size - 10) / 2, 10, 10);
                     else
-                        g.drawRect(frameSizeX - 95, 10, 10, 10);
+                        g.drawRect(frameSizeX - 95, (this.size - 10) / 2, 10, 10);
                     break;
                 case 999:
                     button.setPosX(frameSizeX - 180);
@@ -112,7 +112,7 @@ public class ToolBar {
                         g.fillRect(frameSizeX - 180, 0, 60, this.size);
                     }
                     g.setColor(Color.WHITE);
-                    g.drawLine(frameSizeX - 155, 15, frameSizeX - 145, 15);
+                    g.drawLine(frameSizeX - 155, this.size / 2, frameSizeX - 145, this.size / 2);
                     break;
             }
         }

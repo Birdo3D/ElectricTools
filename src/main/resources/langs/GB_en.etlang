@@ -1,0 +1,12 @@
+'gui_switchboard.title'=ElectricTools Switchboard
+'gui_start.title'=Welcome to ElectricTools
+'gui_switchboard.tb_button.file'=File
+'gui_switchboard.tb_button.edit'=Edit
+'gui_switchboard.tb_button.view'=View
+'gui_switchboard.tb_button.navigate'=Navigate
+'gui_switchboard.tb_button.code'=Code
+'gui_switchboard.scrolling_button.new'=New
+'gui_switchboard.scrolling_button.open'=Open
+'gui_switchboard.scrolling_button.close'=Close
+'gui_switchboard.scrolling_button.save'=Save
+'gui_switchboard.scrolling_button.save_as'=Save as...

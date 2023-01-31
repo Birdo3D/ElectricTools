@@ -1,15 +1,14 @@
 package main.fr.birdo.electrictools;
 
 import main.fr.birdo.electrictools.guis.Guis;
-import main.fr.birdo.electrictools.utils.Gui;
-import main.fr.birdo.electrictools.utils.GuiUtilities;
-import main.fr.birdo.electrictools.utils.Mode;
+import main.fr.birdo.electrictools.utils.*;
 
 import javax.swing.*;
 
 public class ElectricTools extends JPanel {
 
     public static Mode mode = Mode.DARK_MODE;
+    public static Translation.Languages language = Translation.Languages.GB_en;
 
     public static void main(String[] args) {
         Thread newThread = new Thread(ElectricTools::refresh);
