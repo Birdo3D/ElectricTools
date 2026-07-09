@@ -4,10 +4,12 @@ import main.fr.birdo.electrictools.guis.Guis;
 import main.fr.birdo.electrictools.utils.*;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class ElectricTools extends JPanel {
 
-    public static Mode mode = Mode.DARK_MODE;
+    public static Mode mode = Mode.LIGHT_MODE;
     public static Translation.Languages language = Translation.Languages.GB_en;
 
     public static void main(String[] args) {
@@ -22,6 +24,21 @@ public class ElectricTools extends JPanel {
         }
         GuiUtilities.closeGui(Guis.loadingGui);
         GuiUtilities.openGui(Guis.startGui);
+        //test save (open and close)
+        /*for (int i = 0; i < 5; i++) {
+            try {
+                FileSaver.writeToFile(i + " ligne", "test", "eltswb");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        try {
+            System.out.println(FileSaver.readFile("test", "eltswb"));
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }*/
     }
 
     @SuppressWarnings("BusyWait")

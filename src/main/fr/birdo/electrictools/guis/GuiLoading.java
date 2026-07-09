@@ -13,7 +13,7 @@ public class GuiLoading extends Gui {
         setMovable(false);
     }
 
-    public void paintComponent(Graphics g) {
+    public void addComponent(Graphics2D g) {
         //Background
         g.drawImage(ResourceLoader.getImage("logo.png"), 0, 0, 200, 200, null);
     }

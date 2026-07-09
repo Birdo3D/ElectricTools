@@ -16,7 +16,7 @@ public class GuiStart extends Gui {
         addButton(new Button(0, 60, 60, 80, 80));
     }
 
-    public void paintComponent(Graphics g) {
+    public void addComponent(Graphics2D g) {
         //Background
         g.setColor(ElectricTools.mode.getBackgroundColor());
         g.fillRect(0, 0, (int) this.getFrame().getSize().getWidth(), (int) this.getFrame().getSize().getHeight());

@@ -66,7 +66,7 @@ public class ToolBar {
                                     g.drawImage(smButton.getIcon(), button.getPosX() + 4, button.getPosY() + button.getSizeY() + i1 * 20 + 2, 16, 16, null);
                             }
                         }
-                        g.setColor(ElectricTools.mode.getBackgroundColor());//Buttons text color
+                        g.setColor(Color.BLACK);//Buttons text color
                         g.drawString(((ToolbarButton) button).getText(), buttonX, metrics.getAscent() + (this.size - 20) / 2);
                         buttonX = buttonX + 20 + metrics.stringWidth(((ToolbarButton) button).getText());
                     }
@@ -76,7 +76,7 @@ public class ToolBar {
         //Title
         if (buttonX > 40)
             buttonX = buttonX + 20;
-        g.setColor(ElectricTools.mode.getBackgroundColor());//Title text color
+        g.setColor(Color.BLACK);//Title text color
         g.drawString(this.gui.getTitle(), buttonX, metrics.getAscent() + (this.size - 20) / 2);
         //Right buttons
         int frameSizeX = (int) this.gui.getFrame().getSize().getWidth();

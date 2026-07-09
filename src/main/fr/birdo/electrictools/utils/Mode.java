@@ -4,7 +4,7 @@ import java.awt.*;
 
 public enum Mode {
 
-    LIGHT_MODE(new Color(156, 156, 156), new Color(245, 245, 245)),
+    LIGHT_MODE(Color.decode("#8C8C8C"), new Color(255, 255, 255)),
     DARK_MODE(new Color(100, 100, 100), new Color(66, 66, 66));
 
     final Color top_bar;

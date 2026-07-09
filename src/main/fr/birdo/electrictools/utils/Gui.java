@@ -1,5 +1,6 @@
 package main.fr.birdo.electrictools.utils;
 
+import main.fr.birdo.electrictools.ElectricTools;
 import main.fr.birdo.electrictools.events.GuiEvent;
 
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class Gui extends JPanel {
 
     private JFrame frame;
     private JPanel contentPane;
+    private Graphics2D graphics2D;
     private final String label;
     private final String title;
     private final int sizeX;
@@ -56,6 +58,24 @@ public class Gui extends JPanel {
         this.frame.setVisible(true);
     }
 
+    public void paintComponent(Graphics g) {
+        this.graphics2D = (Graphics2D) g.create();
+        try {
+            //enable antialiasing to smooth the edges and remove the staircase effect on diagonals and curves
+            this.graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            //enable pure stroke control to draw very small circles or care about sub-pixel accuracy
+            this.graphics2D.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+            //increase quality by adding a rendering hint
+            this.graphics2D.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            this.addComponent(this.graphics2D);
+        } finally {
+            this.graphics2D.dispose();
+        }
+    }
+
+    public void addComponent(Graphics2D g2D) {
+    }
+
     public String getLabel() {
         return this.label;
     }
@@ -95,7 +115,7 @@ public class Gui extends JPanel {
 
     public Gui addButton(Button button) {
         this.buttons.add(button);
-        if(button instanceof ToolbarButton)
+        if (button instanceof ToolbarButton)
             for (Button button1 : ((ToolbarButton) button).getButtonInMenu())
                 this.addButton(button1);
         return this;
