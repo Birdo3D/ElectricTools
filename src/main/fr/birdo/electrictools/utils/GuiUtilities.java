@@ -66,4 +66,11 @@ public class GuiUtilities {
     public static boolean isButton(Button button, int x, int y) {
         return x > button.getPosX() && x < button.getPosX() + button.getSizeX() && y > button.getPosY() && y < button.getPosY() + button.getSizeY();
     }
+
+    public static Dimension getTextSize(Graphics g, String text) {
+        FontMetrics metrics = g.getFontMetrics(g.getFont());
+        int hgt = metrics.getHeight();
+        int adv = metrics.stringWidth(text);
+        return new Dimension(adv, hgt);
+    }
 }

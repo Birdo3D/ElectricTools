@@ -10,3 +10,9 @@
 'gui_switchboard.scrolling_button.close'=Close
 'gui_switchboard.scrolling_button.save'=Save
 'gui_switchboard.scrolling_button.save_as'=Save as...
+'gui_start.new'=New
+'gui_start.recents'=Recents
+'gui_start.new_project'=New Project
+'gui_start.new_switchboard'=New Switchboard
+'gui_start.new_diagram'=New Diagram
+'gui_start.open'=Open

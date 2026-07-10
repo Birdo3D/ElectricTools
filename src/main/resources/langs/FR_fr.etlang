@@ -5,3 +5,9 @@
 'gui_switchboard.tb_button.close'=Fermer
 'gui_switchboard.tb_button.save'=Enregistrer
 'gui_switchboard.tb_button.save_as'=Enregistrer sous...
+'gui_start.new'=Nouveau
+'gui_start.recents'=Récents
+'gui_start.new_project'=Nouveau Projet
+'gui_start.new_switchboard'=Nouveau Tableau
+'gui_start.new_diagram'=Nouveau Schéma
+'gui_start.open'=Ouvrir
