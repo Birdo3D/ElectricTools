@@ -30,11 +30,6 @@ public class GuiStart extends Gui {
         getToolBar().drawToolbar();
         //Buttons
         for (Button button : this.getButtons()) {
-            if (button.getId() >= 0 && button.getId() <= 3)
-                if (button.isHover()) {
-                    g.setColor(Color.BLACK);
-                    g.fillRoundRect(button.getPosX() - 1, button.getPosY() - 1, button.getSizeX() + 2, button.getSizeY() + 2, 15, 15);
-                }
             switch (button.getId()) {
                 case 0:
                     g.setColor(Color.decode("#BDD143"));
@@ -49,32 +44,42 @@ public class GuiStart extends Gui {
                     g.setColor(Color.decode("#005CA5"));
                     break;
             }
-            if (button.getId() >= 0 && button.getId() <= 3)
-                g.fillRoundRect(button.getPosX(), button.getPosY(), button.getSizeX(), button.getSizeY(), 15, 15);
+            if (button.getId() >= 0 && button.getId() <= 3) {
+                if (button.isHover())
+                    g.fillRoundRect(button.getPosX() - 1, button.getPosY() - 1, button.getSizeX() + 2, button.getSizeY() + 2, 30, 30);
+                if (button.getId() >= 0 && button.getId() <= 3) {
+                    g.setColor(new Color(g.getColor().getRed(), g.getColor().getGreen(), g.getColor().getBlue(), 191)); //set transparency to 75%
+                    g.fillRoundRect(button.getPosX(), button.getPosY(), button.getSizeX(), button.getSizeY(), 30, 30);
+                    g.drawImage(ResourceLoader.getImage("gui_start_button_" + button.getId() + ".png"), button.getPosX(), button.getPosY(), button.getSizeX(), button.getSizeY(), null);
+                }
+            }
         }
         //Texts
         //new
         g.setColor(Color.BLACK);
-        g.setFont(new Font(null, Font.PLAIN, 24));
+        g.setFont(new Font("Rubik", Font.PLAIN, 24));
         String text0 = Translation.getTranslation("gui_start.new");
-        g.drawString(text0, 200 - ((int) GuiUtilities.getTextSize(g, text0).getWidth() / 2), 63);
+        g.drawString(text0, 200 - ((int) GuiUtilities.getTextSize(g, text0).getWidth() / 2), 91);
         //recents
         String text1 = Translation.getTranslation("gui_start.recents");
-        g.drawString(text1, 600 - ((int) GuiUtilities.getTextSize(g, text1).getWidth() / 2), 63);
+        g.drawString(text1, 600 - ((int) GuiUtilities.getTextSize(g, text1).getWidth() / 2), 91);
         //new projects
-        g.setFont(new Font(null, Font.PLAIN, 16));
+        g.setFont(new Font("Rubik", Font.PLAIN, 16));
         String text2 = Translation.getTranslation("gui_start.new_project");
-        g.drawString(text2, 200 - ((int) GuiUtilities.getTextSize(g, text2).getWidth() / 2), 238);
-        //new switchboard
-        g.setFont(new Font(null, Font.PLAIN, 15));
-        String text3 = Translation.getTranslation("gui_start.new_switchboard");
-        g.drawString(text3, 153 - ((int) GuiUtilities.getTextSize(g, text3).getWidth() / 2), 397);
-        //new diagram
-        String text4 = Translation.getTranslation("gui_start.new_diagram");
-        g.drawString(text4, 273 - ((int) GuiUtilities.getTextSize(g, text4).getWidth() / 2), 397);
+        g.drawString(text2, 200 - ((int) GuiUtilities.getTextSize(g, text2).getWidth() / 2), 257);
         //open
+        g.setFont(new Font("Rubik", Font.PLAIN, 15));
         String text5 = Translation.getTranslation("gui_start.open");
-        g.drawString(text5, 600 - ((int) GuiUtilities.getTextSize(g, text5).getWidth() / 2), 393);
+        g.drawString(text5, 600 - ((int) GuiUtilities.getTextSize(g, text5).getWidth() / 2), 411);
+        //new switchboard
+        g.setColor(Color.decode("#424242"));
+        g.drawString(text0, 153 - ((int) GuiUtilities.getTextSize(g, text0).getWidth() / 2), 411);
+        String text3 = Translation.getTranslation("gui_start.switchboard");
+        g.drawString(text3, 153 - ((int) GuiUtilities.getTextSize(g, text3).getWidth() / 2), 411 + (int) GuiUtilities.getTextSize(g, text3).getHeight());
+        //new diagram
+        g.drawString(text0, 273 - ((int) GuiUtilities.getTextSize(g, text0).getWidth() / 2), 411);
+        String text4 = Translation.getTranslation("gui_start.diagram");
+        g.drawString(text4, 273 - ((int) GuiUtilities.getTextSize(g, text4).getWidth() / 2), 411 + (int) GuiUtilities.getTextSize(g, text4).getHeight());
         //Middle bar
         g.setColor(Color.decode("#D9D9D9"));
         g.fillRect(399, 45, 3, 435);

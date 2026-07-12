@@ -8,6 +8,6 @@
 'gui_start.new'=Nouveau
 'gui_start.recents'=Récents
 'gui_start.new_project'=Nouveau Projet
-'gui_start.new_switchboard'=Nouveau Tableau
-'gui_start.new_diagram'=Nouveau Schéma
+'gui_start.switchboard'=Tableau
+'gui_start.diagram'=Schéma
 'gui_start.open'=Ouvrir

@@ -13,6 +13,6 @@
 'gui_start.new'=New
 'gui_start.recents'=Recents
 'gui_start.new_project'=New Project
-'gui_start.new_switchboard'=New Switchboard
-'gui_start.new_diagram'=New Diagram
+'gui_start.switchboard'=Switchboard
+'gui_start.diagram'=Diagram
 'gui_start.open'=Open

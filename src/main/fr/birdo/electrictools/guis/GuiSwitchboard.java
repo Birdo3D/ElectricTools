@@ -127,7 +127,7 @@ public class GuiSwitchboard extends Gui {
 
         //icon
         if (circuitType != CircuitType.EMPTY) {
-            g.drawImage(circuitType.getIcon(), posX + 16, posY + 16, 49, 49, null);
+            g.drawImage(circuitType.getIcon(), posX, posY, 81, 81, null);
         }
     }
 
