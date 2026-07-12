@@ -16,6 +16,11 @@ public class ElectricTools extends JPanel {
         Thread newThread = new Thread(ElectricTools::refresh);
         newThread.start();
         GuiUtilities.openGui(Guis.loadingGui);
+        //test to add projects
+        UserVars.addRecentProject("C://test.txt");
+        UserVars.addRecentProject("C://Users/test.txt");
+        UserVars.addRecentProject("C://Users/Public/test.txt");
+        UserVars.addRecentProject("C://Windows/test.txt");
         //Loading
         try {
             Thread.sleep(3000);
@@ -24,6 +29,7 @@ public class ElectricTools extends JPanel {
         }
         GuiUtilities.closeGui(Guis.loadingGui);
         GuiUtilities.openGui(Guis.startGui);
+
         //test save (open and close)
         /*for (int i = 0; i < 5; i++) {
             try {

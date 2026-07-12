@@ -4,7 +4,13 @@ import main.fr.birdo.electrictools.ElectricTools;
 import main.fr.birdo.electrictools.utils.*;
 import main.fr.birdo.electrictools.utils.Button;
 
+import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class GuiStart extends Gui {
 
@@ -20,6 +26,19 @@ public class GuiStart extends Gui {
         addButton(new Button(2, 238, 313, 70, 70));
         //Open button
         addButton(new Button(3, 565, 313, 70, 70));
+        //Recent project 1
+        //Open button
+        addButton(new Button(4, 423, 122, 260, 53));
+        //remove button
+        addButton(new Button(6, 698, 133, 28, 28));
+        //directory button
+        addButton(new Button(7, 732, 133, 32, 28));
+        //Recent project 2
+        addButton(new Button(5, 423, 194, 260, 53));
+        //remove button
+        addButton(new Button(8, 698, 205, 28, 28));
+        //directory button
+        addButton(new Button(9, 732, 205, 32, 28));
     }
 
     public void addComponent(Graphics2D g) {
@@ -83,6 +102,16 @@ public class GuiStart extends Gui {
         //Middle bar
         g.setColor(Color.decode("#D9D9D9"));
         g.fillRect(399, 45, 3, 435);
+        //Recents projects
+        List<String> recents = UserVars.getRecentsPath();
+        if (recents.isEmpty()) {
+            g.setColor(Color.decode("#424242"));
+            g.drawString(Translation.getTranslation("gui_start.no_recents"), 423, 122);
+        } else {
+            for (int i = 0; i < recents.size() && i < 2; i++) {
+                drawRecentFile(g, 423, 122 + i * 72, recents.get(recents.size() - i - 1), 4 + i);
+            }
+        }
     }
 
     public void buttonClicked(Button button, int mouseButton, int clickCount) {
@@ -96,6 +125,58 @@ public class GuiStart extends Gui {
                 }
                 GuiUtilities.openGui(Guis.switchboardGui);
                 break;
+            case 6:
+                UserVars.removeRecentProject(UserVars.getRecentsPath().size() - 1);
+                break;
+            case 7:
+                try {
+                    Desktop.getDesktop().open(new File(UserVars.getRecentsPath().get(UserVars.getRecentsPath().size() - 1)).getParentFile());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case 8:
+                UserVars.removeRecentProject(UserVars.getRecentsPath().size() - 2);
+                break;
+            case 9:
+                try {
+                    Desktop.getDesktop().open(new File(UserVars.getRecentsPath().get(UserVars.getRecentsPath().size() - 2)).getParentFile());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
         }
+    }
+
+    private void drawRecentFile(Graphics2D g, int x, int y, String path, int buttonIndex) {
+        for (int i = 0; i < this.getButtons().size(); i++) {
+            if (this.getButtons().get(i).getId() == buttonIndex) {
+                if (this.getButtons().get(i).isHover()) {
+                    g.setColor(Color.decode("#9C9C9C"));
+                    g.fillRoundRect(x - 1, y - 1, 355, 55, 16, 16);
+                } else {
+                    g.setColor(Color.decode("#D9D9D9"));
+                    g.fillRoundRect(x, y, 353, 53, 16, 16);
+                }
+            }
+        }
+        //draw title
+        String fileName = Paths.get(path).getFileName().toString();
+        String name = fileName.substring(0, fileName.indexOf("."));
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Rubik", Font.PLAIN, 18));
+        g.drawString(name, x + 13, y + 5 + (int) GuiUtilities.getTextSize(g, name).getHeight());
+        //draw path
+        g.setColor(Color.decode("#424242"));
+        g.setFont(new Font("Rubik", Font.PLAIN, 14));
+        g.drawString(path, x + 13, y + 29 + (int) GuiUtilities.getTextSize(g, path).getHeight());
+        //delete and explorer buttons
+        for (Button button : this.getButtons()) {
+            if (button.getId() >= 6 && button.getId() <= 9 && button.isHover()) {
+                g.setColor(Color.decode("#9C9C9C"));
+                g.fillRoundRect(button.getPosX(), button.getPosY(), button.getSizeX(), button.getSizeY(), 4, 4);
+            }
+        }
+        g.drawImage(ResourceLoader.getImage("gui_start_button_recents.png"), x, y, 353, 53, null);
     }
 }
